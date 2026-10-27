@@ -29,5 +29,69 @@
       "confirmed": "Confirmed",
       "cancelled": "Cancelled"
     }
+  },
+  "admin": {
+    "badge": "Platform Control",
+    "title": "Spaces Management",
+    "subtitle": "Create, edit and manage the status of coworking spaces enforcing business rules.",
+    "spacesManagement": "Spaces Management",
+    "publicView": "Public View",
+    "metrics": {
+      "total": "Total",
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "actions": {
+      "newSpace": "Add New Space",
+      "edit": "Edit",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "cancel": "Cancel",
+      "save": "Save Space",
+      "saveChanges": "Save Changes",
+      "saving": "Saving..."
+    },
+    "table": {
+      "space": "Space",
+      "type": "Type",
+      "capacity": "Capacity",
+      "pricePerHour": "Rate / hr",
+      "status": "Status",
+      "actions": "Actions",
+      "active": "Active",
+      "deactivated": "Deactivated",
+      "max": "max",
+      "pax": "max"
+    },
+    "modal": {
+      "createTitle": "New Coworking Space",
+      "editTitle": "Edit Coworking Space",
+      "nameLabel": "Space name",
+      "namePlaceholder": "e.g. Innovation Room 301",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Details on equipment, furniture, or amenities...",
+      "typeLabel": "Type",
+      "capacityLabel": "Capacity",
+      "priceLabel": "Rate ($ / hr)",
+      "imageLabel": "Image URL (Optional)"
+    },
+    "sidebar": {
+      "theme": "Theme:",
+      "language": "Language:",
+      "logout": "Sign Out"
+    },
+    "types": {
+      "DESK": "Desk",
+      "MEETING_ROOM": "Meeting Room",
+      "CABIN": "Booth"
+    },
+    "messages": {
+      "created": "Space created successfully",
+      "updated": "Space updated successfully",
+      "activated": "Space activated successfully. It is now available in the public catalogue.",
+      "deactivated": "Space deactivated successfully.",
+      "confirmDeactivate": "Are you sure you want to deactivate this space? Users will not be able to make new bookings.",
+      "futureBookingsWarning": "Has confirmed future bookings"
+    }
   }
 }

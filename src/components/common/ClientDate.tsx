@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 interface ClientDateProps {
   date?: string | Date;
   fallback?: string;
   formatOptions?: Intl.DateTimeFormatOptions;
 }
+
+const emptySubscribe = () => () => {};
 
 /**
  * Componente seguro para evitar errores de hidratación al mostrar
@@ -20,16 +22,16 @@ export function ClientDate({
     timeStyle: "short",
   },
 }: ClientDateProps) {
-  const [formattedDate, setFormattedDate] = useState<string | null>(null);
+  const isHydrated = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
-  useEffect(() => {
-    const d = typeof date === "string" ? new Date(date) : date;
-    setFormattedDate(new Intl.DateTimeFormat(undefined, formatOptions).format(d));
-  }, [date, formatOptions]);
-
-  if (!formattedDate) {
+  if (!isHydrated) {
     return <span className="opacity-0">{fallback}</span>;
   }
 
-  return <span>{formattedDate}</span>;
+  const d = typeof date === "string" ? new Date(date) : date;
+  return <span>{new Intl.DateTimeFormat(undefined, formatOptions).format(d)}</span>;
 }

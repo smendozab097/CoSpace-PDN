@@ -29,5 +29,69 @@
       "confirmed": "Confirmada",
       "cancelled": "Cancelada"
     }
+  },
+  "admin": {
+    "badge": "Control de Plataforma",
+    "title": "Gestión de Espacios",
+    "subtitle": "Crea, edita y gestiona el estado de los espacios de coworking asegurando las reglas de negocio.",
+    "spacesManagement": "Gestión de Espacios",
+    "publicView": "Vista Pública",
+    "metrics": {
+      "total": "Total",
+      "active": "Activos",
+      "inactive": "Inactivos"
+    },
+    "actions": {
+      "newSpace": "Agregar Nuevo Espacio",
+      "edit": "Editar",
+      "activate": "Activar",
+      "deactivate": "Desactivar",
+      "cancel": "Cancelar",
+      "save": "Guardar Espacio",
+      "saveChanges": "Guardar Cambios",
+      "saving": "Guardando..."
+    },
+    "table": {
+      "space": "Espacio",
+      "type": "Tipo",
+      "capacity": "Capacidad",
+      "pricePerHour": "Tarifa / hr",
+      "status": "Estado",
+      "actions": "Acciones",
+      "active": "Activo",
+      "deactivated": "Desactivado",
+      "max": "max",
+      "pax": "max"
+    },
+    "modal": {
+      "createTitle": "Nuevo Espacio de Coworking",
+      "editTitle": "Editar Espacio de Coworking",
+      "nameLabel": "Nombre del espacio",
+      "namePlaceholder": "Ej: Sala Innovación 301",
+      "descriptionLabel": "Descripción",
+      "descriptionPlaceholder": "Detalles sobre equipamiento, mobiliario o comodidades...",
+      "typeLabel": "Tipo",
+      "capacityLabel": "Capacidad",
+      "priceLabel": "Tarifa ($ / hr)",
+      "imageLabel": "URL de Imagen (Opcional)"
+    },
+    "sidebar": {
+      "theme": "Tema:",
+      "language": "Idioma:",
+      "logout": "Cerrar Sesión"
+    },
+    "types": {
+      "DESK": "Escritorio",
+      "MEETING_ROOM": "Sala Reuniones",
+      "CABIN": "Cabina"
+    },
+    "messages": {
+      "created": "Espacio creado exitosamente",
+      "updated": "Espacio actualizado exitosamente",
+      "activated": "Espacio activado con éxito. Ya está disponible en el catálogo público.",
+      "deactivated": "Espacio desactivado con éxito.",
+      "confirmDeactivate": "¿Estás seguro de que deseas desactivar este espacio? Los usuarios no podrán realizar nuevas reservas.",
+      "futureBookingsWarning": "Tiene reservas futuras confirmadas"
+    }
   }
 }

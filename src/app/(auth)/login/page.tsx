@@ -1,45 +1,38 @@
-import React from "react";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { verifyAccessToken, verifyRefreshToken } from "@/lib/jwt";
+import { ACCESS_TOKEN_COOKIE, REFRESH_TOKEN_COOKIE } from "@/lib/cookies";
+import { LoginForm } from "@/components/auth/LoginForm";
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get(ACCESS_TOKEN_COOKIE)?.value;
+  const refreshToken = cookieStore.get(REFRESH_TOKEN_COOKIE)?.value;
+
+  // Si ya tiene sesión activa, redirigir inmediatamente según rol
+  if (token) {
+    const payload = await verifyAccessToken(token);
+    if (payload) {
+      redirect(payload.role === "ADMIN" ? "/admin" : "/dashboard");
+    }
+  }
+
+  if (refreshToken) {
+    const refreshPayload = await verifyRefreshToken(refreshToken);
+    if (refreshPayload) {
+      redirect("/dashboard");
+    }
+  }
+
   return (
     <div>
-      <h2 className="text-xl font-semibold text-center mb-2">Iniciar Sesión</h2>
-      <p className="text-sm text-center text-zinc-500 mb-6">
-        Ingresa a tu cuenta para gestionar tus reservas
+      <h2 className="text-xl font-bold text-center tracking-tight text-zinc-900 dark:text-zinc-100 mb-1">
+        Bienvenido de nuevo
+      </h2>
+      <p className="text-xs text-center text-zinc-500 mb-6">
+        Accede para explorar y reservar tus espacios de trabajo
       </p>
-
-      {/* TODO: Integrar LoginForm */}
-      <form className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium mb-1">Correo Electrónico</label>
-          <input
-            type="email"
-            placeholder="usuario@ejemplo.com"
-            className="w-full rounded-lg border border-zinc-300 dark:border-zinc-700 px-3 py-2 bg-transparent text-sm"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium mb-1">Contraseña</label>
-          <input
-            type="password"
-            placeholder="••••••••"
-            className="w-full rounded-lg border border-zinc-300 dark:border-zinc-700 px-3 py-2 bg-transparent text-sm"
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700 transition"
-        >
-          Entrar
-        </button>
-      </form>
-
-      <p className="mt-4 text-center text-xs text-zinc-500">
-        ¿No tienes cuenta?{" "}
-        <a href="/register" className="text-blue-600 hover:underline">
-          Regístrate aquí
-        </a>
-      </p>
+      <LoginForm />
     </div>
   );
 }

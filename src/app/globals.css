@@ -1,8 +1,27 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-neon-azul: #00d2ff;
+  --color-neon-purpura: #9d50bb;
+  --background: #f8fafc;
+  --foreground: #09090b;
+}
+
+html.dark {
+  /* Inspirado en https://smendozab097.github.io/ (--color-fondo-oscuro: #050510e4) pero un poco más oscuro (#03030c) */
+  --color-fondo-oscuro: #03030c;
+  --color-neon-azul: #00d2ff;
+  --color-neon-purpura: #9d50bb;
+  --background: #03030c;
+  --foreground: #e2e8f0;
+  --color-zinc-950: #03030c;
+  --color-zinc-900: #060618;
+  --color-zinc-850: #0a0b24;
+  --color-zinc-800: #121436;
+  --color-zinc-700: #1b1e4c;
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -12,15 +31,37 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Atmósfera en modo oscuro idéntica a https://smendozab097.github.io/
+   Fondo azul casi negro (#03030c) con luces radiales fijas cian (#00d2ff) y púrpura (#9d50bb) */
+html.dark body {
+  background-color: #03030c !important;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(0, 210, 255, 0.16) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(157, 80, 187, 0.16) 0%, transparent 40%) !important;
+  background-attachment: fixed !important;
+}
+
+/* Glass Card idéntico a https://smendozab097.github.io/ */
+.glass-card {
+  transition: all 0.3s ease;
+}
+
+html.dark .glass-card {
+  background: rgba(0, 255, 255, 0.03) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+html.dark .glass-card:hover {
+  background: rgba(0, 255, 255, 0.06) !important;
+  border-color: #00d2ff !important;
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.28) !important;
 }

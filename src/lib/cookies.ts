@@ -8,9 +8,7 @@ const ACCESS_TOKEN_MAX_AGE = 15 * 60;
 // 7 días en segundos
 const REFRESH_TOKEN_MAX_AGE = 7 * 24 * 60 * 60;
 
-/**
- * Adjunta los tokens en cookies httpOnly, secure y sameSite a una respuesta HTTP
- */
+/*Adjunta los tokens en cookies httpOnly, secure y sameSite a una respuesta HTTP*/
 export function setAuthCookies(
   response: NextResponse,
   accessToken: string,
