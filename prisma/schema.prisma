@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum SpaceType {
+  DESK
+  MEETING_ROOM
+  CABIN
+}
+
+enum BookingStatus {
+  CONFIRMED
+  CANCELLED
+}
+
+model User {
+  id           String    @id @default(uuid())
+  name         String
+  email        String    @unique
+  password     String
+  role         Role      @default(USER)
+  refreshToken String?   // Hasheado en base de datos
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  bookings     Booking[]
+
+  @@map("users")
+}
+
+model Space {
+  id           String    @id @default(uuid())
+  name         String
+  description  String
+  type         SpaceType
+  capacity     Int
+  pricePerHour Decimal   @db.Decimal(10, 2)
+  imageUrl     String?
+  isActive     Boolean   @default(true) // Regla 12: No se elimina, se desactiva
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  bookings     Booking[]
+
+  @@map("spaces")
+}
+
+model Booking {
+  id         String        @id @default(uuid())
+  spaceId    String
+  userId     String
+  startTime  DateTime
+  endTime    DateTime
+  totalPrice Decimal       @db.Decimal(10, 2) // Calculado en el servidor (horas * precioPorHora)
+  status     BookingStatus @default(CONFIRMED) // Regla 11: Se cancela cambiando de estado, no se borra
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+
+  space      Space         @relation(fields: [spaceId], references: [id])
+  user       User          @relation(fields: [userId], references: [id])
+
+  @@map("bookings")
+}

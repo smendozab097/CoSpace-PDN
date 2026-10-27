@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "spaces": "Espacios",
+    "myBookings": "Mis Reservas",
+    "admin": "Administración",
+    "login": "Ingresar",
+    "register": "Registrarse",
+    "logout": "Cerrar Sesión"
+  },
+  "home": {
+    "title": "Encuentra tu espacio de trabajo ideal",
+    "subtitle": "Reserva escritorios, salas de reunión y cabinas privadas por hora con disponibilidad en tiempo real.",
+    "cta": "Explorar Espacios"
+  },
+  "spaces": {
+    "catalogueTitle": "Catálogo de Espacios",
+    "bookNow": "Reservar Ahora",
+    "pricePerHour": "por hora",
+    "capacity": "Capacidad",
+    "desk": "Escritorio",
+    "meetingRoom": "Sala de Reuniones",
+    "cabin": "Cabina Privada"
+  },
+  "bookings": {
+    "title": "Mis Reservas",
+    "cancel": "Cancelar Reserva",
+    "status": {
+      "confirmed": "Confirmada",
+      "cancelled": "Cancelada"
+    }
+  }
+}

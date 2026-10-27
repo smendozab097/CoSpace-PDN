@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "home": "Home",
+    "spaces": "Spaces",
+    "myBookings": "My Bookings",
+    "admin": "Admin Panel",
+    "login": "Sign In",
+    "register": "Sign Up",
+    "logout": "Sign Out"
+  },
+  "home": {
+    "title": "Find your ideal workspace",
+    "subtitle": "Book desks, meeting rooms, and private booths by the hour with real-time availability.",
+    "cta": "Explore Spaces"
+  },
+  "spaces": {
+    "catalogueTitle": "Spaces Catalogue",
+    "bookNow": "Book Now",
+    "pricePerHour": "per hour",
+    "capacity": "Capacity",
+    "desk": "Desk",
+    "meetingRoom": "Meeting Room",
+    "cabin": "Private Booth"
+  },
+  "bookings": {
+    "title": "My Bookings",
+    "cancel": "Cancel Booking",
+    "status": {
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled"
+    }
+  }
+}
